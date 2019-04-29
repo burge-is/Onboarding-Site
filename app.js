@@ -247,3 +247,14 @@ function $(selector) {
         return results;
     }
 }
+
+let shownHint = false;
+$("#hint").addEventListener("click", evt => {
+    if (shownHint) {
+        alert(`The combination is 1-2-3-4`);
+    } else {
+        alert(`That's the kinda thing an idiot would have on his luggage!`);
+        shownHint = true;
+        evt.target.innerText = "ANSWER?";
+    }
+});
