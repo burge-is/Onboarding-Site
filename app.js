@@ -219,15 +219,14 @@ function checkLock() {
     }
 }
 
-let pankListenerId = undefined;
 function activatePank() {
-    pankListenerId = $("#the-button").addEventListener("click", function() {
-        document.location.href = "celebrate.html";
-    });
+    $("#the-button").addEventListener("click", celebrate);
 }
-
 function deactivatePank() {
-    pankListenerId && pankListenerId();
+    $("#the-button").removeEventListener("click", celebrate);
+}
+function celebrate() {
+    document.location.href = "celebrate.html";
 }
 
 // Helper function for dom querying
