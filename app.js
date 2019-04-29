@@ -99,7 +99,7 @@ function deleteCookie(name) {
 var combinationLock = {
     combination: 1234,
     locked: true,
-    wheels: [0, 0, 0, 0],
+    wheels: $("#combination input.digit").map(d => d.value || 0), //[0, 0, 0, 0],
     increment: function(wheel) {
         if (this.wheels[wheel] === 9) {
             this.wheels[wheel] = 0;
@@ -128,7 +128,7 @@ var combinationLock = {
         }
     }
 };
-
+console.log(combinationLock.wheels);
 // ***
 // Reusable Functions
 // ***
