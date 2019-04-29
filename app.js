@@ -10,58 +10,51 @@ function login(userInfo = {}) {
     setCookie(emailCookie, email);
     setCookie(departmentCookie, department);
 
-    onboarding.hideLoginModal();
+    hideLoginModal();
+
+    // this sure would be a great place to handle any identification stuff
 }
 
 const emailCookie = "pendoOnboarding__Email";
 const departmentCookie = "pendoOnboarding__Department";
 
-window.onboarding = (function() {
-    let email = getCookie(emailCookie);
-    let department = getCookie(departmentCookie);
+let email = getCookie(emailCookie);
+let department = getCookie(departmentCookie);
+let loginForm = $("#login");
+loginForm.addEventListener("submit", function(submitEvent) {
+    submitEvent.preventDefault();
+    login(getLoginFormData());
+});
+$("#logout").addEventListener("click", logout);
+function logout() {
+    deleteCookie(emailCookie);
+    deleteCookie(departmentCookie);
+    showLoginModal();
+}
 
-    let loginForm = $("#login");
-    loginForm.addEventListener("submit", function(submitEvent) {
-        submitEvent.preventDefault();
-        login(getLoginFormData());
-    });
-    $("#logout").addEventListener("click", logout);
-    function logout() {
-        deleteCookie(emailCookie);
-        deleteCookie(departmentCookie);
-        showLoginModal();
-    }
+// Login modal show/hide
+if (email && department) {
+    login({ email, department });
+} else {
+    showLoginModal();
+}
 
-    // Login modal show/hide
-    if (email && department) {
-        hideLoginModal();
-    } else {
-        showLoginModal();
-    }
-
-    function showLoginModal() {
-        loginForm.style.opacity = 1;
-        loginForm.style.top = "30%";
-        setTimeout(() => (loginForm.style.display = ""), 100);
-    }
-    function hideLoginModal() {
-        loginForm.style.opacity = 0;
-        loginForm.style.top = "-100%";
-        setTimeout(() => (loginForm.style.display = "none"), 100);
-    }
-    function getLoginFormData() {
-        return Array.from(loginForm.elements).reduce(
-            (form, { name, value }) => (name && (form[name] = value), form),
-            {}
-        );
-    }
-
-    return {
-        showLoginModal,
-        hideLoginModal,
-        getLoginFormData
-    };
-})();
+function showLoginModal() {
+    loginForm.style.opacity = 1;
+    loginForm.style.top = "30%";
+    setTimeout(() => (loginForm.style.display = ""), 100);
+}
+function hideLoginModal() {
+    loginForm.style.opacity = 0;
+    loginForm.style.top = "-100%";
+    setTimeout(() => (loginForm.style.display = "none"), 100);
+}
+function getLoginFormData() {
+    return Array.from(loginForm.elements).reduce(
+        (form, { name, value }) => (name && (form[name] = value), form),
+        {}
+    );
+}
 
 /*
  * Cookie helpers
@@ -128,7 +121,6 @@ var combinationLock = {
         }
     }
 };
-console.log(combinationLock.wheels);
 // ***
 // Reusable Functions
 // ***
