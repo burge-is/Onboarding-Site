@@ -1,3 +1,12 @@
+.wrAPPer {
+    position: absolute;
+    display: relative;
+
+    background-color: rgb(237, 216, 223);
+    height: 100%;
+    width: 100%;
+}
+
 #login {
     background-color: white;
     box-shadow: 0 0 0 9999px #dab;
@@ -21,7 +30,7 @@
 }
 
 #the-button {
-    margin: 20px;
+    margin-left: 35px;
     cursor: pointer !important;
     display: inline-block;
     border-radius: 8px;
@@ -78,4 +87,121 @@
 }
 .unselectable {
     user-select: none;
+}
+
+main {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+#combo-lock {
+    display: inline-block;
+    position: relative;
+    margin: 50px;
+}
+#combo-lock #indicator {
+    border: 2px solid #070707;
+    border-radius: 50%;
+    height: 32px;
+    margin: 0 auto 24px;
+    overflow: hidden;
+    position: absolute;
+    right: -50px;
+    width: 32px;
+}
+#combo-lock #indicator.locked svg.unlocked {
+    transform: translate(-50%, 50%);
+}
+#combo-lock #indicator.unlocked svg.locked {
+    transform: translate(-50%, -100%);
+}
+#combo-lock #indicator.unlocked svg.unlocked {
+    transform: translate(-50%, -50%);
+}
+#combo-lock #indicator svg {
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s ease;
+    width: 16px;
+}
+#combo-lock #indicator svg.locked {
+    background: #f56666;
+}
+#combo-lock #indicator svg.unlocked {
+    background: #50ef87;
+}
+#combo-lock #combination {
+    max-width: 144px;
+    border: 2px solid #070707;
+    border-radius: 4px;
+    display: flex;
+    padding: 0 4px;
+}
+#combo-lock #combination .wheel {
+    font-size: 24px;
+    padding: 0 4px;
+    text-align: center;
+}
+#combo-lock #combination .wheel .increment,
+#combo-lock #combination .wheel .decrement {
+    background: #1d242f;
+    border: 2px solid #070707;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 24px;
+    position: relative;
+    transition: border-color 0.1s ease;
+    width: 24px;
+}
+#combo-lock #combination .wheel .increment:active,
+#combo-lock #combination .wheel .decrement:active {
+    border-color: #fff;
+}
+#combo-lock #combination .wheel .increment.click,
+#combo-lock #combination .wheel .decrement.click {
+    border-color: #fff;
+    transition: border-color 0s ease;
+}
+#combo-lock #combination .wheel .increment img,
+#combo-lock #combination .wheel .decrement img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+}
+#combo-lock #combination .wheel .increment {
+    margin-top: -14px;
+}
+#combo-lock #combination .wheel .decrement {
+    margin-bottom: -14px;
+}
+#combo-lock #combination .wheel .digit {
+    background: #1d242f;
+    border: 2px solid #070707;
+    border-radius: 24px;
+    caret-color: #1d242f;
+    color: #fff;
+    cursor: pointer;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px 0;
+    text-align: center;
+    user-select: none;
+    transition: border-color 0.1s ease;
+    width: 24px;
+}
+#combo-lock #combination .wheel .digit:focus {
+    border-color: #fff;
+}
+#combo-lock #combination .wheel .digit::-webkit-inner-spin-button,
+#combo-lock #combination .wheel .digit::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#combo-lock #combination .wheel .digit::selection {
+    background: #1d242f;
 }
