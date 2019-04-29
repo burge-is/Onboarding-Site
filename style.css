@@ -193,6 +193,7 @@ main {
     user-select: none;
     transition: border-color 0.1s ease;
     width: 24px;
+    font-size: 24px;
 }
 #combo-lock #combination .wheel .digit:focus {
     border-color: #fff;
