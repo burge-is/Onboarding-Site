@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src * data:
+        blob: 'unsafe-inline' 'unsafe-eval';"
+        />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Product Love</title>
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="app.js"></script>
+    </head>
+
+    <body>
+        <div id="the-button">
+            <span class="unselectable">Do NOT press</span>
+        </div>
+
+        <a href="test.html">
+            <img
+                src="img/construction.gif"
+                alt="under construction"
+                style="position:fixed;top:0;right:0;margin:10px;"
+            />
+        </a>
+
+        <form id="login">
+            <label for="email">Email: </label>
+            <input name="email" id="email" type="email" required />
+
+            <label for="departmnet">Department: </label>
+            <select name="department" id="department">
+                <option>Engineering</option>
+                <option>Sales</option>
+                <option>Professional Services</option>
+            </select>
+
+            <button id="login__button" class="button-primary">Login</button>
+        </form>
+    </body>
+</html>
