@@ -20,6 +20,5 @@ if ! [ -x "$(command -v browser-sync)" ]; then
 fi
 
 export LOCAL_IP=`ipconfig getifaddr en0`
-export THIS_FILES_PATH= "$( cd "$(dirname "$0")" ; pwd -P )"
 
 browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 99
